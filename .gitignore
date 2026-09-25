@@ -1,0 +1,3 @@
+lab_*/		# ignoring all the environments
+.pytest_cache/
+__pycache__/

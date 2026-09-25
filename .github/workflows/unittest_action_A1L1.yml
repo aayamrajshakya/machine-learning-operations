@@ -1,0 +1,32 @@
+name: Python Unittests
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.11
+
+            - name: Install dependencies
+              run: pip install -r Assignment01/Lab01/deps.txt
+
+            - name: Run unittests
+              run: python3 -m unittest Assignment01.Lab01.test.test_unittest
+              continue-on-error: false
+
+            - name: Notify on success
+              if: success()
+              run: echo "Unit tests passed successfully"
+
+            - name: Notify on failure
+              if: failure()
+              run: echo "Unit tests failed"
