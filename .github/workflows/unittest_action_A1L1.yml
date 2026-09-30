@@ -3,7 +3,9 @@ on:
     push:
         branches:
             - main
-
+        paths:
+            - 'Assignment01/Lab01/**'
+            - '.github/workflows/unittest_action_A1L1.yml'
 jobs:
     build:
         runs-on: ubuntu-latest
